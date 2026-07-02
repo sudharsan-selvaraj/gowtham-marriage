@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    min-height: 100dvh; /* dvh matches the visible mobile viewport — avoids a phantom scrollbar */
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Clean surface */
+  .card {
+    @apply bg-card rounded-2xl border border-line shadow-card p-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5
+           text-sm font-medium transition-colors duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-[#8f2c41];
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink border border-line hover:bg-line/40;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm
+           text-ink placeholder-muted/60 outline-none transition
+           focus:border-accent focus:ring-2 focus:ring-accent/15;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-muted mb-1.5;
+  }
+
+  /* Tabs / nav item */
+  .nav-item {
+    @apply inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium
+           text-muted hover:text-ink hover:bg-line/50 transition-colors;
+  }
+  .nav-item-active {
+    @apply text-ink bg-white border border-line shadow-card;
+  }
+}
+
+/* Confetti pieces (easter egg only) */
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #DDD8D1; border-radius: 99px; }
+::-webkit-scrollbar-track { background: transparent; }
